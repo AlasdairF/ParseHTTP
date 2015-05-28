@@ -2,7 +2,7 @@
 
 This package replaces http.ParseForm. It's a slightly simpler and more optimized implementation when all you want is to parse a simple POST form (which is often the case), excluding GET, PUT & multipart forms.
 
-Rather than returning a map[string][]string, parsepost.Form takes the *http.Request and a function var func([]byte, []byte) as an input. You can build a map with this or whatever you want.
+Rather than returning a `map[string][]string`, parsepost.Form takes the *http.Request and a function var `func([]byte, []byte)` as an input. You can build a map with this or whatever you want.
 
 ###Usage
 
