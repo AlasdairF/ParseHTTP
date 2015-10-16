@@ -8,6 +8,40 @@ import (
  "errors"
 )
 
+func EasyGET(r *http.Request, fields []string) ([][]byte, error) {
+	res := make([][]byte, len(fields))
+	var i int
+	var c, kstring string
+	fn := func(k, v []byte) {
+		kstring = string(k)
+		for i, c = range fields {
+			if kstring == c {
+				res[i] = v
+				break
+			}
+		}
+	}
+	err := GET(r, fn)
+	return res, err
+}
+
+func EasyPOST(r *http.Request, fields []string) ([][]byte, error) {
+	res := make([][]byte, len(fields))
+	var i int
+	var c, kstring string
+	fn := func(k, v []byte) {
+		kstring = string(k)
+		for i, c = range fields {
+			if kstring == c {
+				res[i] = v
+				break
+			}
+		}
+	}
+	err := POST(r, fn)
+	return res, err
+}
+
 func POST(r *http.Request, fn func([]byte, []byte)) error {
 	
 	// Check that a request body even exists to parse
